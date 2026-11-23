@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+artifacts/*
+!artifacts/.gitkeep
+reports/*
+!reports/.gitkeep
+dist/
+*.egg-info/
+
+# FILE END: .gitignore
