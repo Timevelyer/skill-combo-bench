@@ -84,8 +84,10 @@ Add to the marketplace's `plugins` array:
   commit in `sha` is checked out.
 - Do **not** add `version` to the entry: `plugin.json` already sets `6.0.0`, and a
   conflicting entry version produces a warning.
-- Resolve the SHA with `gh api repos/Timevelyer/skill-combo-bench/commits/main --jq .sha`
-  and pin the commit that contains `.claude-plugin/`, `SKILL.md` and `docs/skill-reference.md`.
+- Resolve the SHA with `gh api repos/Timevelyer/skill-combo-bench/commits/main --jq .sha`,
+  or pin the remediation commit `39572c8629f3ae73ad7f1f3306274a4f27708b61` — the commit
+  that introduced `.claude-plugin/`, the shortened `SKILL.md`, `docs/skill-reference.md`
+  and `tools/verify_adapter.py`.
 
 ### Option B — users add this repository as a marketplace
 
