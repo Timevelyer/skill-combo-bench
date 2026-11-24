@@ -21,7 +21,14 @@ deterministic, offline-first harness you can audit.
 
 ## Quick start
 
+The CLI resolves `config/`, `schemas/` and `datasets/` relative to the repository root, so
+run it from a clone (an installed plugin ships the same files, but the working directory
+still has to be that checkout):
+
 ```bash
+git clone https://github.com/Timevelyer/skill-combo-bench
+cd skill-combo-bench
+
 python -m pip install PyYAML jsonschema        # only two runtime dependencies
 python -m tools.bench_runner validate          # schemas + tasks + manifests
 python -m tools.bench_runner dry-run           # estimate runs and cost, execute nothing

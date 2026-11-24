@@ -1,5 +1,5 @@
 """Core, provider-neutral benchmark engine."""
 
-__version__ = "6.1.2"
+__version__ = "6.1.3"
 
 # FILE END: engine/__init__.py

@@ -3,7 +3,7 @@
 [![CI](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Version](https://img.shields.io/badge/version-6.1.2-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
+[![Version](https://img.shields.io/badge/version-6.1.3-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Timevelyer/skill-combo-bench?style=social)](https://github.com/Timevelyer/skill-combo-bench/stargazers)
 
 **中文** · [English](README.en.md)
@@ -35,7 +35,7 @@
   "source": {
     "source": "github",
     "repo": "Timevelyer/skill-combo-bench",
-    "ref": "v6.1.2",
+    "ref": "v6.1.3",
     "sha": "<40 位提交 SHA>"
   },
   "description": "Offline-first, auditable benchmark for skill combinations across agents",
