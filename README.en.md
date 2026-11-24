@@ -3,7 +3,7 @@
 [![CI](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Version](https://img.shields.io/badge/version-6.1.1-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
+[![Version](https://img.shields.io/badge/version-6.1.2-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Timevelyer/skill-combo-bench?style=social)](https://github.com/Timevelyer/skill-combo-bench/stargazers)
 
 English · [中文](README.md)
@@ -33,7 +33,7 @@ To list it from someone else's marketplace, pin the commit — `sha` must be the
   "source": {
     "source": "github",
     "repo": "Timevelyer/skill-combo-bench",
-    "ref": "v6.1.0",
+    "ref": "v6.1.2",
     "sha": "<40-character commit SHA>"
   },
   "description": "Offline-first, auditable benchmark for skill combinations across agents",
@@ -114,7 +114,7 @@ The tool runs one minimal smoke task and writes `adapter_verification.json`: pla
 
 | Check | Status | Note |
 |---|---|---|
-| Unit tests | pass (56/56) | `python -m unittest discover -s tests/unit`, Python 3.11.17 |
+| Unit tests | pass (58/58) | `python -m unittest discover -s tests/unit`, Python 3.11.17 |
 | Integration tests | pass (9/9) | `tests/integration`, mock agent and tools |
 | End-to-end test | pass (1/1) | `tests/e2e`, offline loop |
 | Config / schemas / tasks | pass | `python -m tools.bench_runner validate`, no errors |

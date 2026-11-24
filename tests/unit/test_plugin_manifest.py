@@ -116,6 +116,35 @@ class SingleSkillLayoutTests(unittest.TestCase):
             self.assertTrue((ROOT / relative).is_file(), f"missing {relative}")
 
 
+class VersionConsistencyTests(unittest.TestCase):
+    """One version number, declared once and copied everywhere it is stamped.
+
+    ``engine.__version__`` is what ``bench_runner --version`` prints and what experiment
+    snapshots record as ``project_version``, so a stale value silently mislabels evidence.
+    """
+
+    def test_every_declaration_agrees(self) -> None:
+        pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        pyproject_version = re.search(r'^version\s*=\s*"([^"]+)"', pyproject, re.MULTILINE).group(1)
+
+        plugin_version = _load(PLUGIN_MANIFEST)["version"]
+        marketplace_version = _load(MARKETPLACE)["version"]
+
+        from engine import __version__ as engine_version
+
+        declared = {
+            "pyproject.toml": pyproject_version,
+            ".claude-plugin/plugin.json": plugin_version,
+            ".claude-plugin/marketplace.json": marketplace_version,
+            "engine/__init__.py": engine_version,
+        }
+        self.assertEqual(len(set(declared.values())), 1, f"version drift: {declared}")
+
+    def test_version_is_semver(self) -> None:
+        plugin_version = _load(PLUGIN_MANIFEST)["version"]
+        self.assertRegex(plugin_version, r"^\d+\.\d+\.\d+$")
+
+
 if __name__ == "__main__":
     unittest.main()
 

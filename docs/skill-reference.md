@@ -130,6 +130,6 @@ python -m unittest discover -s tests/integration -p "test_*.py" -v
 python -m unittest discover -s tests/e2e -p "test_*.py" -v
 ```
 
-56 unit, 9 integration and 1 end-to-end test cover metrics, mutation, state validation,
+58 unit, 9 integration and 1 end-to-end test cover metrics, mutation, state validation,
 statistics, judge calibration, CLI wiring, fault injection, resume, the mock loop and
 adapter verification verdicts.

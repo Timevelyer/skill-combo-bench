@@ -1,7 +1,7 @@
 {
   "name": "skill-combo-bench",
   "description": "Offline-first, auditable benchmark for how skill combinations change agent behaviour: RC/TI/SS/CE/CPS/RS metrics, deterministic mock loop, vendor-neutral CLI adapters for Codex, Claude Code, OpenCode, DeepSeek Harness and Zcode.",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "author": {
     "name": "Timevelyer",
     "url": "https://github.com/Timevelyer"

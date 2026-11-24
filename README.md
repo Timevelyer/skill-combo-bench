@@ -3,7 +3,7 @@
 [![CI](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Version](https://img.shields.io/badge/version-6.1.1-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
+[![Version](https://img.shields.io/badge/version-6.1.2-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Timevelyer/skill-combo-bench?style=social)](https://github.com/Timevelyer/skill-combo-bench/stargazers)
 
 **中文** · [English](README.en.md)
@@ -35,7 +35,7 @@
   "source": {
     "source": "github",
     "repo": "Timevelyer/skill-combo-bench",
-    "ref": "v6.1.0",
+    "ref": "v6.1.2",
     "sha": "<40 位提交 SHA>"
   },
   "description": "Offline-first, auditable benchmark for skill combinations across agents",
@@ -137,7 +137,7 @@ python -m unittest discover -s tests/e2e -p "test_*.py" -v
 
 | 检查 | 状态 | 说明 |
 |---|---|---|
-| 单元测试 | 通过（56/56） | `python -m unittest discover -s tests/unit`，Python 3.11.17 |
+| 单元测试 | 通过（58/58） | `python -m unittest discover -s tests/unit`，Python 3.11.17 |
 | 集成测试 | 通过（9/9） | `tests/integration`，Mock Agent 与 Mock Tools |
 | 端到端测试 | 通过（1/1） | `tests/e2e`，离线闭环 |
 | 配置 / Schema / 任务集 | 通过 | `python -m tools.bench_runner validate`，`errors` 为空 |
