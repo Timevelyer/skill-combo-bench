@@ -98,9 +98,13 @@ To move an adapter past `NOT_VERIFIED`, run a real smoke check and keep the evid
 
 ```bash
 python -m tools.verify_adapter --agent codex \
-  --command codex exec --json "{task_file}" \
-  --output artifacts/adapter_verification.json
+  --output artifacts/adapter_verification.json -- \
+  codex exec --json "{task_file}"
 ```
+
+The adapter's own flags go after a standalone `--`, so options such as `-c` are never parsed
+by the verification tool; `--command-json '["codex","exec","--json","{task_file}"]'` is the
+scripted equivalent.
 
 The command writes `VERIFIED` only when the process exits 0 **and** emits parseable output;
 otherwise it records `FAILED` with the observed exit code and stderr excerpt. Evidence is

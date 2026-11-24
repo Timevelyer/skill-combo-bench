@@ -3,7 +3,7 @@
 [![CI](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/Timevelyer/skill-combo-bench/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Version](https://img.shields.io/badge/version-6.1.0-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
+[![Version](https://img.shields.io/badge/version-6.1.1-blue.svg)](https://github.com/Timevelyer/skill-combo-bench/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Timevelyer/skill-combo-bench?style=social)](https://github.com/Timevelyer/skill-combo-bench/stargazers)
 
 **中文** · [English](README.en.md)

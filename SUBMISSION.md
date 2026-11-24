@@ -71,7 +71,7 @@ Add to the marketplace's `plugins` array:
   "source": {
     "source": "github",
     "repo": "Timevelyer/skill-combo-bench",
-    "ref": "v6.1.0",
+    "ref": "v6.1.1",
     "sha": "<40-character lowercase commit SHA>"
   },
   "description": "Offline-first, auditable benchmark for how skill combinations change agent behaviour",
@@ -82,10 +82,10 @@ Add to the marketplace's `plugins` array:
 
 - `sha` is the documented field for pinning; when both `ref` and `sha` are present, the
   commit in `sha` is checked out.
-- Do **not** add `version` to the entry: `plugin.json` already sets `6.1.0`, and a
+- Do **not** add `version` to the entry: `plugin.json` already sets `6.1.1`, and a
   conflicting entry version produces a warning.
 - Resolve the SHA with `gh api repos/Timevelyer/skill-combo-bench/commits/main --jq .sha`.
-  The `v6.1.0` tag points at the commit that carries the plugin manifests, the shortened
+  The `v6.1.1` tag points at the commit that carries the plugin manifests, the shortened
   `SKILL.md`, `docs/skill-reference.md` and `tools/verify_adapter.py`; the review-remediation
   commit before it is `39572c8629f3ae73ad7f1f3306274a4f27708b61`.
 
@@ -117,6 +117,7 @@ python -m unittest discover -s tests/unit -p "test_*.py"   # 56 unit tests
 | Shared `ADAPTER_CLASS_PATHS` registry in `adapters/agent/__init__.py` | Engine and verifier resolve adapters from one mapping |
 | Fixed test-count claim (`26` → `56` unit tests, plus 9 integration, 1 e2e) | Documentation accuracy |
 | Added `docs/`, `.claude-plugin/` to the layout docs | Keep the documented tree truthful |
-| Bumped the package version `6.0.0` → `6.1.0` in `pyproject.toml`, `plugin.json` and `marketplace.json` | `v6.0.0` is already released with the pre-plugin layout; the plugin packaging needs its own tag |
+| Bumped the package version `6.0.0` → `6.1.1` in `pyproject.toml`, `plugin.json` and `marketplace.json` | `v6.0.0` is already released with the pre-plugin layout; the plugin packaging needs its own tag |
+| Fixed the `verify_adapter` example in `docs/skill-reference.md` (`--command` was never a real flag; the argv goes after `--`) | A copy-pasteable example must actually run |
 
 <!-- FILE END: SUBMISSION.md -->
