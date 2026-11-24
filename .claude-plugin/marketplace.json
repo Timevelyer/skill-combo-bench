@@ -1,0 +1,24 @@
+{
+  "name": "skill-combo-bench-marketplace",
+  "description": "Self-hosted marketplace exposing skill-combo-bench as a single-skill plugin. External marketplaces should reference the plugin by GitHub source pinned to a commit SHA.",
+  "version": "6.0.0",
+  "owner": {
+    "name": "Timevelyer",
+    "url": "https://github.com/Timevelyer"
+  },
+  "plugins": [
+    {
+      "name": "skill-combo-bench",
+      "source": "./",
+      "description": "Offline-first, auditable benchmark for how skill combinations change agent behaviour: RC/TI/SS/CE/CPS/RS metrics, deterministic mock loop, vendor-neutral CLI adapters.",
+      "category": "testing",
+      "tags": [
+        "benchmark",
+        "evaluation",
+        "skills",
+        "agents",
+        "reproducibility"
+      ]
+    }
+  ]
+}

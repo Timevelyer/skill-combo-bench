@@ -116,16 +116,9 @@ class ExperimentRunner:
             return self.agent
         agent_config = self.config.get("agent", {"type": "mock"})
         agent_type = agent_config.get("type", agent_config.get("id", "mock")).lower().replace("-", "_")
-        classes = {
-            "mock": ("adapters.agent.mock_agent", "MockAgent"),
-            "mock_agent": ("adapters.agent.mock_agent", "MockAgent"),
-            "generic_cli": ("adapters.agent.generic_cli", "GenericCLIAgent"),
-            "codex": ("adapters.agent.codex_adapter", "CodexAdapter"),
-            "claude_code": ("adapters.agent.claude_code_adapter", "ClaudeCodeAdapter"),
-            "opencode": ("adapters.agent.opencode_adapter", "OpenCodeAdapter"),
-            "deepseek_harness": ("adapters.agent.deepseek_harness_adapter", "DeepSeekHarnessAdapter"),
-            "zcode": ("adapters.agent.zcode_adapter", "ZcodeAdapter"),
-        }
+        from adapters.agent import ADAPTER_CLASS_PATHS
+
+        classes = ADAPTER_CLASS_PATHS
         if agent_type not in classes:
             raise ExperimentError(f"Unknown agent adapter: {agent_type}")
         module_name, class_name = classes[agent_type]

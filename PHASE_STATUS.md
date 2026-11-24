@@ -59,7 +59,9 @@
 | `python -m tools.judge_calibration --dataset tests/golden_set/development.jsonl` | 0 | `status=N/A`（缺 judge 分数，明确报告 4 条 human / 0 条 judge） |
 | `python -m tools.judge_calibration --dataset tests/golden_set/calibration_example.jsonl --bias` | 0 | `status=PASS`，MAE 0.125 / ICC 0.96 / Kappa 0.778；偏差筛查三项均未触发（合成示例） |
 | `python -m tools.stats_analysis --input <results.jsonl>` | 0 | 配对分析输出，退化情形明确标 `N/A`，无 NaN |
-| `python -m unittest discover -s tests/unit` | 0 | 28 tests `OK` |
+| `python -m tools.verify_adapter --agent generic_cli -- <可执行> ...` | 0 / 1 / 2 | 三态裁定：`VERIFIED` / `FAILED` / `NOT_RUN`，写出 `adapter_verification.json` |
+| `python -m tools.verify_adapter --agent codex -- <未安装的可执行>` | 2 | `NOT_RUN` + `EXECUTABLE_NOT_FOUND`，不伪造验证通过 |
+| `python -m unittest discover -s tests/unit` | 0 | 56 tests `OK` |
 | `python -m unittest discover -s tests/integration` | 0 | 9 tests `OK` |
 | `python -m unittest discover -s tests/e2e` | 0 | 1 test `OK` |
 | Schema 校验（实际生成的 664 条 trace） | 0 | 0 失败 |
@@ -89,6 +91,22 @@
 | `tests/integration` 为空 | 不满足 18.2 | 9 项集成测试覆盖全部要求 |
 | `PHASE_STATUS.md` 缺失 | 不满足 18.4 第 21 项 | 本文件 |
 | Mock 状态标为 IMPLEMENTED | 低估真实验证结果 | 更新为 `INTEGRATION_TESTED` / `integration_test_status: PASS` |
+
+---
+
+## PR #834 审阅意见整改
+
+审阅结论：无安全顾虑，但指出两点——(1) 体量与作用域不适合作 all-skills 内置条目；(2) 外部适配器仍为 `NOT_VERIFIED`，当前仅 Mock Agent 端到端可跑。整改如下。
+
+| # | 审阅意见 | 整改 | 验证 |
+|---|---|---|---|
+| 1 | 97 文件 / ~7.8k 行，不宜并入 all-skills | 增加 `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`，按外部插件以提交 SHA 固定引用；`SUBMISSION.md` 给出可直接粘贴的 marketplace 条目 | `tests/unit/test_plugin_manifest.py` 校验必填字段与单技能布局 |
+| 2 | `SKILL.md` 过长，应说明"何时用"并指向仓库 | `SKILL.md` 由 130 行精简至 70 行内；详细契约（任务/工具/故障/报告约束）迁至 `docs/skill-reference.md` | 行数断言在测试中固定 |
+| 3 | 适配器 `NOT_VERIFIED`，只有 Mock 跑通 | 新增 `tools/verify_adapter.py`：跑一次最小 smoke 任务，产出 `adapter_verification.json`（平台、命令模板哈希、exit code、延迟、脱敏输出、`does_not_establish`）；三态 `VERIFIED/FAILED/NOT_RUN` | 15 项单元测试覆盖三态、空输出、非 JSON 输出、缺可执行、健康检查、脱敏、退出码 |
+| 4 | — | `adapters/agent/__init__.py` 新增 `ADAPTER_CLASS_PATHS` 单一注册表，引擎与验证工具共用 | `test_vendor_adapter_uses_shared_registry` |
+| 5 | — | 修正文档错误：单元测试数 26 → 56（含新增 15 项验证 + 13 项清单校验） | `docs/skill-reference.md`、`SUBMISSION.md` |
+
+**诚实性声明（整改后仍然成立）**：仓库内没有任何适配器被升级为 `VERIFIED`；`VERIFIED` 只能由用户在真实环境运行 `verify_adapter` 后产生，且其证据仅覆盖"一次命令、一台机器、一个 smoke 任务"，不代表输出质量、成本或跨环境支持。默认端到端路径仍为 Mock Agent（`MOCK_ONLY`）。
 
 ---
 
